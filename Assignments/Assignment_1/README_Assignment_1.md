@@ -114,9 +114,30 @@ LDVAL = (60MHz / 10kHz) - 1 = 5999
 ```
 
 Note: `RTE_Device.h` defines `RTE_BUSCLK = 48000000` but this is incorrect
-for the HSRUN configuration. The actual bus clock is determined by `MCG.c`.
+for the HSRUN configuration. The actual bus clock is determined by [MCG.c](./src/MCG.c).
 
-## TODO List
+---
+
+# NOTES
+- We know we'll have to have:
+  - 0-3V
+  - Sinusoid?
+  - Looking at some of the images in describing the chip architecture will be helpful.(maybe look at the source code or the datasheets at times)
+
+## End Goal
+Convert:
+1. Analog to
+2. Digital
+3. Altered digital
+4. Back to analog
+
+I.e.
+start with aquisition, --> Implement an algorithm that transforms inputs --> output the transformed function
+
+
+---
+
+# TODO List
 * [ ] Start ADC conversion and read previous result
 * [ ] Apply warble envelope
 * [ ] Write to DAC (12-bit)

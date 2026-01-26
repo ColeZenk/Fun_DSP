@@ -13,6 +13,9 @@
 #include "MCG.h"
 #include "TimerInt.h"
 
+// Assignment 1 | Warbling Wire
+#include "WarblingWire.h"
+
 volatile uint16_t adc_sample;
 
 /**
@@ -40,7 +43,7 @@ int main(void) {
     DAC_Init();
     TimerInt_Init();
 
-    while (1) {
+    for(;;) {
         __WFI();  // Sleep until interrupt
     }
 }

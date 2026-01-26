@@ -22,8 +22,7 @@ void UART0_Init(void) {
 }
 
 void UART0_PutChar(char c) {
-    while (!(UART0->S1 & UART_S1_TDRE_MASK))
-        ;
+    while (!(UART0->S1 & UART_S1_TDRE_MASK));
     UART0->D = c;
 }
 
