@@ -21,9 +21,8 @@ int main(void) {
     ADC_Init();
     ADC_Calibrate();
     DAC_Init();
-    TimerInt_Init();
-
     WarblingWire_Init();
+
     for(;;) {
         __WFI();  // Sleep until interrupt
     }

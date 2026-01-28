@@ -2,7 +2,11 @@
 #define WARBLINGWIRE_H
 
 #include <math.h>
-#define NORMALIZE_FREQ_CONST       2 * M_PI / 10000
+
+#define SAMPLING_FREQ              10000
+#define NORMALIZE_FREQ_CONST       2 * M_PI / SAMPLING_FREQ
+
+
 /**************************************************************************
   TWEAKING VALUES
  **************************************************************************/
@@ -11,6 +15,7 @@
  * @macros  Functional options
  * @purpose Through this macro you can define the ADC channel used.
  */
+
 #define ADC_CHANNEL                12
 #define FREQUENCY_WARBLE_HZ        3 * NORMALIZE_FREQ_CONST
 
@@ -41,14 +46,14 @@ void WarblingWire_Init(void);
  */
 
 /* #define TEST_PASSTHROUGH */
-#define TEST_OUTPUT
+/* #define TEST_OUTPUT */
 
-/* Output test constants */
-/* #ifdef TEST_OUTPUT */
+// Output test constants
+
+#ifdef TEST_OUTPUT
 
 #define TEST_SIGNAL_FREQ_HZ     100.0f
 #define TEST_PERIOD             30000
-
 typedef enum {
     WAVEFORM_SINE,
     WAVEFORM_TRIANGLE,

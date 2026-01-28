@@ -60,6 +60,8 @@ static uint16_t warbleTransform(uint16_t input){
 
     // Calculations
     accumulated_phase +=  (float)FREQUENCY_WARBLE_HZ;
+    if( accumulated_phase >= 2.0f * M_PI ) accumulated_phase -= 2.0f * M_PI;
+
     float envelope = offset + amplitude * sinf(accumulated_phase);   //0.1 to 1.0
 
     transformed_output = (uint16_t)(input * envelope);

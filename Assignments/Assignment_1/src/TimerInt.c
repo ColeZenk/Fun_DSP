@@ -19,7 +19,7 @@ void TimerInt_Init(void) {
     SIM->SCGC6 |= SIM_SCGC6_PIT_MASK;
     PIT->MCR = 0;
 
-    PIT->CHANNEL[0].LDVAL = PIT_LDVAL;
+    PIT->CHANNEL[0].LDVAL = TIMER_LOAD_COUNT;
     PIT->CHANNEL[0].TFLG = PIT_TFLG_TIF_MASK;  // Clear pending
     PIT->CHANNEL[0].TCTRL = PIT_TCTRL_TIE_MASK;  // Enable interrupt
 
