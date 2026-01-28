@@ -44,7 +44,7 @@ void WarblingWire_Init(void);
 #define TEST_OUTPUT
 
 /* Output test constants */
-#ifdef TEST_OUTPUT
+/* #ifdef TEST_OUTPUT */
 
 #define TEST_SIGNAL_FREQ_HZ     100.0f
 #define TEST_PERIOD             30000
