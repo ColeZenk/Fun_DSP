@@ -41,7 +41,7 @@ void WarblingWire_Init(void);
  */
 
 /* #define TEST_PASSTHROUGH */
-/* #define TEST_OUTPUT */
+#define TEST_OUTPUT
 
 /* Output test constants */
 #ifdef TEST_OUTPUT

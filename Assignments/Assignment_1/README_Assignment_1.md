@@ -118,6 +118,61 @@ for the HSRUN configuration. The actual bus clock is determined by [MCG.c](./src
 
 ---
 
+# Defining the Algorithm Used
+The way I look at the question is like this:
+- There will be a periodic input.
+- The output will need to be that of some peridic input multiplied by yet another periodic input.
+- The phases of course, must be different.
+- There are multiple ways this algorithm could take form, I feel that using a sinusoid is the easiest for me to understand personally.
+
+So at this point we know that our main engine of this transformer will look something like:
+
+$$
+
+Y(t) = sin(\omega t) X(t)
+
+$$
+
+With omega at this point, being some arbitrary phase shift.
+
+I think that a reasonable implementation for a filter like s is a simple low-pass filter approach.
+This will make the output look a little more like
+
+$$
+
+y(n) = y(n-1) + (1 -a) |x(n)|
+
+$$
+
+only thing is, this needs to be dyanmically changing (albeit with a static frequency). Also it shouldn't be filtering...
+So it should just affect the gain!
+
+## Observing Dyanamic Gain Implementations
+We know it must
+- Reach a max at 0 or 2pi
+- Reach a min at pi
+- Go up to a gain of one, or down to a gain of .1
+
+So we know what a standard sine formula will look like...
+
+$$
+
+f(t) = \delta + \alpha sin( \omega t)
+
+$$
+
+So this yeilds 2 equations and 2 unknowns:
+$$
+
+ \delta + \alpha  = 1 \\
+ \delta - \alpha = .1 \\
+==> \delta = frac{1.1}{2} = 0.55
+    \alpha = 1 - \delta = 0.45
+$$
+
+## Finding the Frequency
+uhhh, 3HZ. Because why not. It will need to be normalized by deviding by 10 KHz and mulitplying by 2pi. (and also reset when it reaches above 2pi ideally)
+
 # NOTES
 - We know we'll have to have:
   - 0-3V
@@ -148,6 +203,6 @@ start with aquisition, --> Implement an algorithm that transforms inputs --> out
 # TODO List
 * [X] Confgure Fs to run at 10 KHz
 * [X] Obtain the software and flash the board
-* [ ] Start ADC conversion and read previous result
-* [ ] Apply warble envelope
-* [ ] Write to DAC (12-bit)
+* [X] Start ADC conversion and read previous result
+* [X] Apply warble envelope
+* [X] Write to DAC (12-bit)
